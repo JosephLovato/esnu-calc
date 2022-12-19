@@ -37,7 +37,7 @@ def convert_to_score(s: str):
     elif s == "U":
         return Score.U
     else:
-        raise RuntimeError("Cannot convert score: " + s)
+        return Score.X
 
 
 def score_to_string(score):
