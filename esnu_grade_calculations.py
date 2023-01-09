@@ -102,9 +102,21 @@ def compute_analysis_score(scores: list):
         return Score.X
 
 
-def compute_final_score(component_scores: list):
+def compute_final_grade(component_scores: list):
     """Computes final A-F grade given a list of three component scores
     """
+    # special cases
+    if(component_scores.count(Score.E) == 1 and component_scores.count(Score.S) == 1 and component_scores.count(Score.N) == 1):
+        return 'C'  # ESN
+    if(component_scores.count(Score.E) == 2 and component_scores.count(Score.N) == 1):
+        return 'C'  # EEN
+    if(component_scores.count(Score.E) == 2 and component_scores.count(Score.U) == 1):
+        return 'D'  # EEU
+    if(component_scores.count(Score.E) == 1 and component_scores.count(Score.S) == 1 and component_scores.count(Score.U) == 1):
+        return 'D'  # ESU
+    if(component_scores.count(Score.E) == 1 and component_scores.count(Score.N) == 2):
+        return 'D'  # ENN
+
     if component_scores.count(Score.E) == 3 or (component_scores.count(Score.E) >= 2 and count_at_least([s for s in component_scores if s != Score.E], Score.S) >= 1):
         return 'A'
     elif component_scores.count(Score.E) == 1 and [s for s in component_scores if s != Score.E].count(Score.S) == 2:
@@ -118,6 +130,6 @@ def compute_final_score(component_scores: list):
 
 
 def calculate_grade(programming_scores, analysis_scores, midterm_score, final_score):
-    return compute_final_score([compute_programming_score(programming_scores),
+    return compute_final_grade([compute_programming_score(programming_scores),
                                 compute_analysis_score(analysis_scores),
                                 compute_comprehension_score(final_score, midterm_score)])

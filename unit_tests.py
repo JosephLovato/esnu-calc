@@ -192,28 +192,28 @@ class TestFinalGradeCalculation(unittest.TestCase):
             lga_q_5["programming"], lga_q_5["analysis"], lga_q_5["midterm"], lga_q_5["final"]))
 
     def test_all_possible_A(self):
-        self.assertEqual('A', compute_final_score([Score.E, Score.E, Score.E]))
-        self.assertEqual('A', compute_final_score([Score.E, Score.E, Score.S]))
+        self.assertEqual('A', compute_final_grade([Score.E, Score.E, Score.E]))
+        self.assertEqual('A', compute_final_grade([Score.E, Score.E, Score.S]))
 
     def test_all_possible_B(self):
-        self.assertEqual('B', compute_final_score([Score.E, Score.S, Score.S]))
+        self.assertEqual('B', compute_final_grade([Score.E, Score.S, Score.S]))
 
     def test_all_possible_C(self):
-        self.assertEqual('C', compute_final_score([Score.S, Score.S, Score.S]))
+        self.assertEqual('C', compute_final_grade([Score.S, Score.S, Score.S]))
 
     def test_all_possible_D(self):
-        self.assertEqual('D', compute_final_score([Score.S, Score.S, Score.N]))
-        self.assertEqual('D', compute_final_score([Score.E, Score.S, Score.N]))
+        self.assertEqual('D', compute_final_grade([Score.S, Score.S, Score.N]))
+        self.assertEqual('D', compute_final_grade([Score.E, Score.S, Score.N]))
 
     def test_all_possible_F(self):
-        self.assertEqual('F', compute_final_score([Score.S, Score.N, Score.N]))
-        self.assertEqual('F', compute_final_score([Score.S, Score.N, Score.U]))
-        self.assertEqual('F', compute_final_score([Score.N, Score.N, Score.N]))
-        self.assertEqual('F', compute_final_score([Score.U, Score.U, Score.N]))
-        self.assertEqual('F', compute_final_score([Score.U, Score.E, Score.E]))
-        self.assertEqual('F', compute_final_score([Score.U, Score.S, Score.S]))
-        self.assertEqual('F', compute_final_score([Score.U, Score.U, Score.S]))
-        self.assertEqual('F', compute_final_score([Score.U, Score.U, Score.U]))
+        self.assertEqual('F', compute_final_grade([Score.S, Score.N, Score.N]))
+        self.assertEqual('F', compute_final_grade([Score.S, Score.N, Score.U]))
+        self.assertEqual('F', compute_final_grade([Score.N, Score.N, Score.N]))
+        self.assertEqual('F', compute_final_grade([Score.U, Score.U, Score.N]))
+        self.assertEqual('F', compute_final_grade([Score.U, Score.E, Score.E]))
+        self.assertEqual('F', compute_final_grade([Score.U, Score.S, Score.S]))
+        self.assertEqual('F', compute_final_grade([Score.U, Score.U, Score.S]))
+        self.assertEqual('F', compute_final_grade([Score.U, Score.U, Score.U]))
 
 
 if __name__ == '__main__':
